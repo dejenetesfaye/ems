@@ -159,7 +159,7 @@ const ManagerDashboard = () => {
                 <XAxis dataKey="name" hide={eventCostData.length > 5} />
                 <YAxis />
                 <Tooltip />
-                <Bar dataKey="total" fill="#3b82f6" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="total" fill="#b49f5a" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </ModernCard>
