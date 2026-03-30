@@ -37,7 +37,13 @@ const MainLayout = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const isLoggedIn = !!localStorage.getItem('token');
-  const user = JSON.parse(localStorage.getItem('user') || 'null');
+  const userJson = localStorage.getItem('user');
+  let user = null;
+  try {
+    user = userJson ? JSON.parse(userJson) : null;
+  } catch (err) {
+    user = null;
+  }
   const isAdmin = user && ['systemadmin', 'superadmin'].includes(user.role);
 
   return (
@@ -52,7 +58,7 @@ const MainLayout = ({ children }) => {
           {isLoggedIn && location.pathname !== '/login' && (
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               <Typography variant="body2" sx={{ color: '#fff', mr: 1, fontWeight: 500 }}>
-                {user?.role?.toUpperCase() || 'UNKNOWN'}
+                {user && user.role ? user.role.toUpperCase() : 'NO ROLE'}
               </Typography>
               <Button sx={{ color: '#fff' }} onClick={() => navigate('/dashboard')}>
                 Dashboard

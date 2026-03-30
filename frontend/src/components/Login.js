@@ -21,7 +21,8 @@ const Login = () => {
     e.preventDefault();
     setError('');
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiBase}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
