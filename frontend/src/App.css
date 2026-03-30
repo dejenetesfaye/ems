@@ -22,6 +22,7 @@ a:hover {
 
 .app-shell {
   min-height: 100vh;
+  background: #f5f8ff;
 }
 
 .MUI-grid-item {
@@ -32,12 +33,40 @@ a:hover {
   transform: translateY(-2px);
 }
 
-MuiPaper-root {
+.MuiPaper-root,
+.modern-card,
+.quick-stat,
+.status-card {
+  background: #ffffff;
   border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 footer {
-  background: linear-gradient(180deg, rgba(255, 250, 240, 0.8), rgba(255, 248, 224, 1));
+  background: #faf7ea;
+}
+
+.main-grid {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 1200px) {
+  .main-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1199px) {
+  .main-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 900px) {

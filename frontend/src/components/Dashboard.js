@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import SuperAdminDashboard from './SuperAdminDashboard';
+import ModernDashboard from './ModernDashboard';
 import ManagerDashboard from './ManagerDashboard';
 import BrideDashboard from './BrideDashboard';
 import SupervisorDashboard from './SupervisorDashboard';
@@ -20,7 +20,7 @@ const Dashboard = () => {
   switch (user.role) {
     case 'systemadmin':
     case 'superadmin':
-      return <SuperAdminDashboard />;
+      return <ModernDashboard />;
     case 'manager':
       return <ManagerDashboard />;
     case 'bride':
