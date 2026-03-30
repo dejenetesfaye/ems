@@ -1,0 +1,53 @@
+.App {
+  min-height: 100vh;
+  background: radial-gradient(circle at 10% 8%, #fefff7, #f4edce 50%, #f0e8b2 100%);
+  color: #1f2937;
+  font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  transition: background 0.35s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #a67c00;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #985b0f;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.MUI-grid-item {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.MUI-grid-item:hover {
+  transform: translateY(-2px);
+}
+
+MuiPaper-root {
+  border-radius: 16px;
+}
+
+footer {
+  background: linear-gradient(180deg, rgba(255, 250, 240, 0.8), rgba(255, 248, 224, 1));
+}
+
+@media (max-width: 900px) {
+  .App {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .App {
+    padding: 8px;
+  }
+}
