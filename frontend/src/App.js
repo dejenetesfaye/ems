@@ -51,6 +51,9 @@ const MainLayout = ({ children }) => {
           </Box>
           {isLoggedIn && location.pathname !== '/login' && (
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Typography variant="body2" sx={{ color: '#fff', mr: 1, fontWeight: 500 }}>
+                {user?.role?.toUpperCase() || 'UNKNOWN'}
+              </Typography>
               <Button sx={{ color: '#fff' }} onClick={() => navigate('/dashboard')}>
                 Dashboard
               </Button>
