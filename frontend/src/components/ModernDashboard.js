@@ -77,7 +77,8 @@ const ModernDashboard = () => {
     if (!date.getTime()) return acc;
     const m = date.toLocaleString('default', { month: 'short' });
     const bucket = acc.find((b) => b.month === m);
-    const eventTotal = event.totalCost ?? event.resources?.reduce((s, r) => s + Number(r.totalCost || 0), 0) || 0;
+    const calculatedTotal = event.resources?.reduce((s, r) => s + Number(r.totalCost || 0), 0) || 0;
+    const eventTotal = event.totalCost ?? calculatedTotal;
     if (bucket) {
       bucket.total += eventTotal;
       bucket.count += 1;
@@ -87,7 +88,10 @@ const ModernDashboard = () => {
     return acc;
   }, []);
 
-  const barData = events.map((evt) => ({ name: evt.name, total: evt.totalCost ?? evt.resources?.reduce((s, r) => s + (r.totalCost || 0), 0) || 0 }));
+  const barData = events.map((evt) => {
+    const calculated = evt.resources?.reduce((s, r) => s + (r.totalCost || 0), 0) || 0;
+    return { name: evt.name, total: evt.totalCost ?? calculated };
+  });
 
   return (
     <Box sx={{ p: { xs: 2, sm: 3, md: 4 }, color: theme.palette.text.primary }}>
@@ -170,7 +174,8 @@ const ModernDashboard = () => {
                 </TableHead>
                 <TableBody>
                   {events.slice(0, 7).map((evt) => {
-                    const cost = evt.totalCost ?? evt.resources?.reduce((s, r) => s + (r.totalCost || 0), 0) || 0;
+                    const calculated = evt.resources?.reduce((s, r) => s + (r.totalCost || 0), 0) || 0;
+                    const cost = evt.totalCost ?? calculated;
                     return (
                       <TableRow key={evt._id || `${evt.name}-${evt.date}`}> 
                         <TableCell>{evt.name}</TableCell>
