@@ -24,6 +24,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import AddIcon from '@mui/icons-material/Add';
 
+const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const ResourcesList = () => {
   const [resources, setResources] = useState([]);
   const [resourceName, setResourceName] = useState('');
@@ -39,7 +41,7 @@ const ResourcesList = () => {
   const fetchResources = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/resources', {
+      const res = await axios.get(`${apiBase}/api/resources`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setResources(res.data);
@@ -54,7 +56,7 @@ const ResourcesList = () => {
     setSuccess('');
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/resources', { name: resourceName, description: resourceDescription }, {
+      await axios.post(`${apiBase}/api/resources`, { name: resourceName, description: resourceDescription }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchResources();
@@ -71,7 +73,7 @@ const ResourcesList = () => {
     setSuccess('');
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/resources/${id}`, {
+      await axios.delete(`${apiBase}/api/resources/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchResources();

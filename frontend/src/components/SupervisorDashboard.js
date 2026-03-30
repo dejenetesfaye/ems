@@ -21,6 +21,8 @@ import ModernCard from './ui/ModernCard';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 
+const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const SupervisorDashboard = () => {
   const [requests, setRequests] = useState([]);
   const [error, setError] = useState('');
@@ -34,7 +36,7 @@ const SupervisorDashboard = () => {
   const fetchRequests = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/requests/supervisor', {
+      const res = await axios.get(`${apiBase}/api/requests/supervisor`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setRequests(res.data);
@@ -48,7 +50,7 @@ const SupervisorDashboard = () => {
     setSuccess('');
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/requests/${id}/fulfill`, {}, {
+      await axios.put(`${apiBase}/api/requests/${id}/fulfill`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchRequests();

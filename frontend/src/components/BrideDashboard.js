@@ -25,6 +25,7 @@ import {
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 const BrideDashboard = () => {
   const [event, setEvent] = useState(null);
@@ -42,7 +43,7 @@ const BrideDashboard = () => {
   const fetchEvent = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/events/bride', {
+      const res = await axios.get(`${apiBase}/api/events/bride`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setEvent(res.data);
@@ -54,7 +55,7 @@ const BrideDashboard = () => {
   const fetchRequests = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/requests/bride', {
+      const res = await axios.get(`${apiBase}/api/requests/bride`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setRequests(res.data);
@@ -67,7 +68,7 @@ const BrideDashboard = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/requests', { resource, quantity, note }, {
+      await axios.post(`${apiBase}/api/requests`, { resource, quantity, note }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchRequests();
@@ -82,7 +83,7 @@ const BrideDashboard = () => {
   const handleConfirm = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/requests/${id}/confirm`, {}, {
+      await axios.put(`${apiBase}/api/requests/${id}/confirm`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchRequests();

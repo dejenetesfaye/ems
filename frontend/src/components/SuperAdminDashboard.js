@@ -25,6 +25,8 @@ import ModernCard from './ui/ModernCard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
+const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const SuperAdminDashboard = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -44,7 +46,7 @@ const SuperAdminDashboard = () => {
     const fetchEvents = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/events/all', {
+        const res = await axios.get(`${apiBase}/api/events/all`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setEvents(res.data);
@@ -85,7 +87,7 @@ const SuperAdminDashboard = () => {
     setSuccess('');
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/auth/register', { name, email, password, role }, {
+      await axios.post(`${apiBase}/api/auth/register`, { name, email, password, role }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSuccess('User created successfully');

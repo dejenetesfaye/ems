@@ -20,6 +20,8 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
@@ -37,7 +39,7 @@ const UsersList = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/users', {
+      const res = await axios.get(`${apiBase}/api/users`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(res.data);

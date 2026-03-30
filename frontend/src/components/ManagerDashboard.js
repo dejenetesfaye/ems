@@ -25,6 +25,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddIcon from '@mui/icons-material/Add';
 
+const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const ManagerDashboard = () => {
   const [events, setEvents] = useState([]);
   const [brides, setBrides] = useState([]);
@@ -50,7 +52,7 @@ const ManagerDashboard = () => {
   const fetchEvents = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/events/manager', {
+      const res = await axios.get(`${apiBase}/api/events/manager`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setEvents(res.data);
@@ -62,7 +64,7 @@ const ManagerDashboard = () => {
   const fetchBrides = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/users/brides', {
+      const res = await axios.get(`${apiBase}/api/users/brides`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBrides(res.data);
@@ -74,7 +76,7 @@ const ManagerDashboard = () => {
   const fetchResources = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/resources', {
+      const res = await axios.get(`${apiBase}/api/resources`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setResources(res.data);
@@ -106,7 +108,7 @@ const ManagerDashboard = () => {
     setSuccess('');
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/events', { name, type, date, brideId, resources: eventResources }, {
+      await axios.post(`${apiBase}/api/events`, { name, type, date, brideId, resources: eventResources }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchEvents();
