@@ -25,7 +25,7 @@ import ModernCard from './ui/ModernCard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const apiBase = 'https://ems-kd2d.onrender.com';
 
 const SuperAdminDashboard = () => {
   const [name, setName] = useState('');

@@ -25,7 +25,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddIcon from '@mui/icons-material/Add';
 
-const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const apiBase = 'https://ems-kd2d.onrender.com';
 
 const ManagerDashboard = () => {
   const [events, setEvents] = useState([]);

@@ -25,7 +25,7 @@ import {
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const apiBase = 'https://ems-kd2d.onrender.com';
 
 const BrideDashboard = () => {
   const [event, setEvent] = useState(null);

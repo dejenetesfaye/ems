@@ -20,7 +20,7 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const apiBase = 'https://ems-kd2d.onrender.com';
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);

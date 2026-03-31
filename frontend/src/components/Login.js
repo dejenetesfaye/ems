@@ -21,7 +21,7 @@ const Login = () => {
     e.preventDefault();
     setError('');
     try {
-      const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const apiBase = 'https://ems-kd2d.onrender.com';
       const response = await fetch(`${apiBase}/api/auth/login`, {
         method: 'POST',
         headers: {

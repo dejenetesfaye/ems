@@ -21,7 +21,7 @@ import ModernCard from './ui/ModernCard';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const apiBase = 'https://ems-kd2d.onrender.com';
 
 const SupervisorDashboard = () => {
   const [requests, setRequests] = useState([]);
