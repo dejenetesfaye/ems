@@ -7,7 +7,10 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://ems-frontend-virid-three.vercel.app'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Connect to MongoDB
